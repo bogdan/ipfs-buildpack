@@ -5,7 +5,7 @@ tar -C $1/vendor/ -xzf /tmp/go-ipfs.tar.gz
 mkdir -p "$1/.profile.d/"
 cat <<EOF >"$1"/.profile.d/ipfs.sh
 export PATH="\$PATH:/app/vendor/go-ipfs/"
+if [ ! -f "\$HOME/.ipfs/config" ]; then
+  ipfs init --profile=test
+fi
 EOF
-
-echo "-----> Initializing IPFS"
-$1/vendor/go-ipfs/ipfs init --profile=test
