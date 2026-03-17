@@ -1,11 +1,12 @@
 echo "-----> Installing IPFS"
-wget --no-verbose https://dist.ipfs.io/go-ipfs/v0.11.0/go-ipfs_v0.11.0_linux-amd64.tar.gz
+wget --no-verbose -O /tmp/go-ipfs.tar.gz https://dist.ipfs.io/go-ipfs/v0.11.0/go-ipfs_v0.11.0_linux-amd64.tar.gz
 mkdir -p $1/vendor
-tar -C $1/vendor/ -xvzf go-ipfs_v0.11.0_linux-amd64.tar.gz
+tar -C $1/vendor/ -xzf /tmp/go-ipfs.tar.gz
 mkdir -p "$1/.profile.d/"
 cat <<EOF >"$1"/.profile.d/ipfs.sh
 export PATH="\$PATH:/app/vendor/go-ipfs/"
 EOF
 
 echo "-----> Initializing IPFS"
-/app/vendor/go-ipfs/ipfs init --profile=test
+find $1/vendor
+$1/vendor/go-ipfs/ipfs init --profile=test
