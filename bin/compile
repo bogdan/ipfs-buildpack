@@ -6,3 +6,6 @@ mkdir -p "$1/.profile.d/"
 cat <<EOF >"$1"/.profile.d/ipfs.sh
 export PATH="\$PATH:/app/vendor/go-ipfs/"
 EOF
+
+echo "-----> Initializing IPFS"
+$1/vendor/go-ipfs/ipfs init --profile=test
