@@ -8,5 +8,4 @@ export PATH="\$PATH:/app/vendor/go-ipfs/"
 EOF
 
 echo "-----> Initializing IPFS"
-find $1/vendor
 $1/vendor/go-ipfs/ipfs init --profile=test
